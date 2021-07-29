@@ -1,5 +1,5 @@
 import { Collegue } from './../models/collegue';
-import { collegues } from './../mock/collegues.mock';
+import { collegues, collegue } from './../mock/collegues.mock';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -14,6 +14,11 @@ export class DataService {
     return this.collegues
     .filter((obj: Collegue)=>obj.nom===nom)
     .map((collegue: Collegue)=>collegue.matricule)
+  }
+
+  recupereCollegueCourant(){
+    return collegue;
+
   }
 
 
