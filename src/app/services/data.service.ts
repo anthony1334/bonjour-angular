@@ -1,9 +1,20 @@
+import { Collegue } from './../models/collegue';
+import { collegues } from './../mock/collegues.mock';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataService {
+  collegues: Collegue[] = collegues;
 
-  constructor() { }
+  constructor() {}
+  rechercheParNom(nom: string): string[] {
+
+    return this.collegues
+    .filter((obj: Collegue)=>obj.nom===nom)
+    .map((collegue: Collegue)=>collegue.matricule)
+  }
+
+
 }
