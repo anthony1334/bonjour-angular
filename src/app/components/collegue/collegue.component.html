@@ -1,9 +1,13 @@
-{{col.matricule}}
-{{col.nom}}
-{{col.prenoms}}
-{{col.dateDeNaissance}}
-{{col.email}}
-{{col.photoUrl}}
+<ul>
+  <li>{{col.matricule}}</li>
+  <li> {{col.nom}}</li>
+  <li>{{col.nom | uppercase}}</li>
+  <li>{{col.dateDeNaissance | date}}</li>
+  <li *ngIf="state">{{col.email}}</li>
+  <li *ngIf="!state" ><input type="mail" name="mail" [value]="col.email"></li>
+  <li *ngIf="state">{{col.photoUrl}}</li>
+  <li *ngIf="!state" ><input type="text" name="url" [value]="col.photoUrl"></li>
+</ul>
 
 <button (click)="modifier()">Modifier</button>
 <a href="#" (click)="creer()">creer un nouveau collegue</a>

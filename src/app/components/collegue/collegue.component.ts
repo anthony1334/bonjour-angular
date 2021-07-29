@@ -8,13 +8,15 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CollegueComponent implements OnInit {
   @Input() col: Collegue = new Collegue();
+  state: boolean = true;
 
   constructor() { }
 
   ngOnInit(): void {
   }
   modifier(): void{
-    console.log("collegue modifié !")
+    console.log("collegue modifié !");
+    this.state = !this.state;
   }
 
   creer(): void{
