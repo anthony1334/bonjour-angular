@@ -1,8 +1,12 @@
-<label>Recherche par nom</label><input type="text" class="text">
+
+  <label>Recherche par nom</label><input type="text" class="text" [(ngModel)]="nom">
 <button (click)="afficher()">Rechercher</button>
+
+
+
 <ng-container *ngIf="collegues.length">
   <ul>
-    <li *ngFor="let collegue of collegues">{{collegue.matricule}},{{collegue.nom}}</li>
+    <li *ngFor="let matricule of collegues">{{matricule}}</li>
   </ul>
 </ng-container>
 

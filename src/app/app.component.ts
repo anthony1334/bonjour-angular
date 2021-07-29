@@ -1,13 +1,23 @@
+import { DataService } from './services/data.service';
 import { Collegue } from './models/collegue';
-import { Component } from '@angular/core';
-import { collegue } from './mock/collegues.mock';
+import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
   title = 'bonjour-angular';
-  collegue: Collegue = collegue;
+  collegue: Collegue = new Collegue;
+
+  constructor(private dataService: DataService){}
+
+  ngOnInit(){
+    this.collegue = this.dataService.recupereCollegueCourant();
+  }
 }
+
+

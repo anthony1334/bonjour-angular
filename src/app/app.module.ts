@@ -6,6 +6,7 @@ import { BonjourComponent } from './components/bonjour/bonjour.component';
 import { BonjourAvecPrenomComponent } from './components/bonjour-avec-prenom/bonjour-avec-prenom.component';
 import { CollegueComponent } from './components/collegue/collegue.component';
 import { RechercheCollegueParNomComponent } from './recherche-collegue-par-nom/recherche-collegue-par-nom.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RechercheCollegueParNomComponent } from './recherche-collegue-par-nom/r
     RechercheCollegueParNomComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

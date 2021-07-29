@@ -1,6 +1,7 @@
 import { Collegue } from './../models/collegue';
 import { collegues } from './../mock/collegues.mock';
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data.service';
 
 
 @Component({
@@ -9,16 +10,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recherche-collegue-par-nom.component.css']
 })
 export class RechercheCollegueParNomComponent implements OnInit {
-  collegues: Collegue[] = [];
+  collegues: string[] = [];
+  nom: string = '';
 
-  constructor() { }
+
+  constructor(private dataService: DataService) { }
 
   afficher(): void {
-    this.collegues = collegues;
+
+    this.collegues = this.dataService.rechercheParNom(this.nom);
 
   }
 
+
+
   ngOnInit(): void {
+
   }
 
 }
