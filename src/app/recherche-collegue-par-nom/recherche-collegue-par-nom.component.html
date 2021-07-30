@@ -4,10 +4,14 @@
 
 
 
-<ng-container *ngIf="collegues.length">
+<ng-container *ngIf="collegues.length;else noMatricule">
   <ul>
     <li *ngFor="let matricule of collegues">{{matricule}}</li>
   </ul>
+
 </ng-container>
+<ng-template #noMatricule>
+ <div *ngIf="state">pas de matricule existant</div>
+</ng-template>
 
 

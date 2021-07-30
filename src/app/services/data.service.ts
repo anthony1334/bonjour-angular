@@ -1,6 +1,8 @@
 import { Collegue } from './../models/collegue';
 import { collegues, collegue } from './../mock/collegues.mock';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +10,7 @@ import { Injectable } from '@angular/core';
 export class DataService {
   collegues: Collegue[] = collegues;
 
-  constructor() {}
+  constructor(private httpClient: HttpClient) {}
   rechercheParNom(nom: string): string[] {
 
     return this.collegues
@@ -18,6 +20,12 @@ export class DataService {
 
   recupereCollegueCourant(){
     return collegue;
+
+  }
+
+  findByName(name: string): Observable<any>{
+    return this.httpClient.get<any>('http://localhost:8080/collegue/'+ name);
+
 
   }
 

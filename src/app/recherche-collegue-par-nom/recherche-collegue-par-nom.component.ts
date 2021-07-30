@@ -2,6 +2,7 @@ import { Collegue } from './../models/collegue';
 import { collegues } from './../mock/collegues.mock';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
+import {take} from 'rxjs/operators';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { DataService } from '../services/data.service';
 export class RechercheCollegueParNomComponent implements OnInit {
   collegues: string[] = [];
   nom: string = '';
+  state: boolean = false;
 
 
   constructor(private dataService: DataService) { }
@@ -19,6 +21,13 @@ export class RechercheCollegueParNomComponent implements OnInit {
   afficher(): void {
 
     this.collegues = this.dataService.rechercheParNom(this.nom);
+    this.state = true;
+    this.dataService.findByName(this.nom)
+    .pipe(
+      take(1)
+    )
+    .subscribe((response)=>console.log(response));
+
 
   }
 
