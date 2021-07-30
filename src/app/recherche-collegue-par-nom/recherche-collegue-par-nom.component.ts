@@ -20,13 +20,14 @@ export class RechercheCollegueParNomComponent implements OnInit {
 
   afficher(): void {
 
-    this.collegues = this.dataService.rechercheParNom(this.nom);
     this.state = true;
     this.dataService.findByName(this.nom)
     .pipe(
       take(1)
     )
-    .subscribe((response)=>console.log(response));
+    .subscribe((response)=>{
+      this.collegues = response.map((obj: any)=> obj.matricule)
+    });
 
 
   }
